@@ -1,0 +1,52 @@
+.hidden{
+    visibility: hidden;
+}
+
+/*===========Form============*/
+form, .actions{
+    border:1px solid #ccc;
+    border-radius:5px;
+    width:50%;
+    padding:20px;
+    margin:15vh auto 0;
+}
+
+.icon{
+    
+    height:50px;
+    width:50px;
+    left:calc(25% - 20px);
+    position:absolute;
+    top:5vh;
+}
+input, label{
+    display:block;
+}
+
+input, button[type="submit"]{
+    margin-bottom:20px;
+    width:100%;
+    height:30px;
+}
+
+.actions{
+    margin-top:20px;
+}
+
+.warning{
+    border:1px solid #dd2956;
+    width:50%;
+    margin:20px auto;
+    padding:20px;
+    border-radius:5px;
+    color: #dd2956;
+    background-color: #dd295650;
+}
+
+.protectedPage{
+    width:75%;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:20px;
+    margin:10vh auto;
+}

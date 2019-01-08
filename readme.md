@@ -1,4 +1,4 @@
-![turnkey logo](icon.png) 
+![turnkey logo](my-app/public/icon.png) 
 # Turnkey
 Skip the set up - jump into the fun stuff!
 

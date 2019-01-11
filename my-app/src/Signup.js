@@ -53,7 +53,6 @@ class Signup extends Component{
     render(){
         return (
             <div className="signup">
-                <img className="icon" src="icon.png" alt="Turnkey icon" />
                 <form id="signup" onSubmit={(e) => this.handleSubmit(e)}>
                     <label htmlFor="f_name">first name:</label>
                     <input id="f_name" type="text" maxLength="50" required onChange={(e) => this.handleChange(e)}/>

@@ -43,7 +43,6 @@ class Login extends Component{
     render(){
         return(
             <div className="login">
-                <img className="icon" src="icon.png" alt="Turnkey icon"/>
                 <form id="login" onSubmit={(e) => this.handleSubmit(e)}>
                     <label htmlFor="username">username:</label>
                     <input id="username" type="text" required onChange={(e) => this.handleChange(e)}/>

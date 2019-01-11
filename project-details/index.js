@@ -1,3 +1,3 @@
-const projectName = "test"
-const dbName = "test"
+const projectName = "my-queue"
+const dbName = "my_queue"
 module.exports = {projectName, dbName}

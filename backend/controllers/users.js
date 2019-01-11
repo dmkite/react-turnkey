@@ -1,10 +1,14 @@
 const model = require('../models/users')
 
 function signup(req, res, next) {
+    console.log(req.body, '================')
     const {f_name, l_name, username, password, passwordMatch } = req.body
 
-    if (!username || !password || !f_name || !l_name || password !== passwordMatch) 
+    if (!username || !password || !f_name || !l_name || password !== passwordMatch){
+        console.log(username, password, f_name, l_name, passwordMatch)
         return next({status: 400, message: 'Signup error'})
+        
+    } 
 
     return model.signup(f_name, l_name, username, password)
         .then(([data]) => {

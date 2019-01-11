@@ -10,10 +10,6 @@ class App extends Component {
     super(props)
     this.state = {
       signup: false,
-      auth: {
-        pending: false,
-        user: null
-      }
     }
   }
   handleClick = () => {
@@ -23,7 +19,7 @@ class App extends Component {
   }
 
   handleLogin = () => {
-
+    
   }
 
   render() {

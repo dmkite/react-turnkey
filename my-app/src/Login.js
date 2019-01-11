@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-import Warning from './Warning'
 import { logIn } from './actions/auth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Login extends Component{
     constructor(props){
         super(props)
         this.state = {
-            errorState: false,
-            errorMessage: '',
             username: '',
             password: ''
         }
@@ -28,7 +27,17 @@ class Login extends Component{
             password: this.state.password
         }
 
-        return this.props.logIn(body)
+        return axios.post (process.env.REACT_APP_BASE_URL + '/auth/token', body)
+            .then(response => {
+                this.props.logIn(response.data)
+                this.props.history.push('/home')
+            })
+            .catch(err => {
+                this.props.logIn(err)
+            })
+            
+        
+        
         }
 
     render(){
@@ -45,8 +54,9 @@ class Login extends Component{
                         ? false 
                         : true}>submit</button>
                 </form>
-                <p className="actions">Not a member? <a href="#" onClick={this.props.handleClick}>Signup</a></p>
-                {this.state.errorState ? <Warning warning={this.state.errorMessage}/> : ''}
+                <p className="actions">Not a member? <Link to='/signup'>Signup</Link></p>
+               {this.props.auth.error ? <div className="warning">{this.props.auth.error}</div> : null}
+                {this.props.auth.success ? <div className="success">{this.props.auth.success}</div> : null} 
             </div>
             
         )

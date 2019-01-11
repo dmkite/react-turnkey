@@ -33,7 +33,7 @@ input, button[type="submit"]{
     margin-top:20px;
 }
 
-.warning{
+.warning, .success{
     border:1px solid #dd2956;
     width:50%;
     margin:20px auto;
@@ -43,10 +43,29 @@ input, button[type="submit"]{
     background-color: #dd295650;
 }
 
+.success {
+    border:1px solid #29dd56;
+    color:#29dd56;
+    background-color:#29dd5650;
+}
 .protectedPage{
     width:75%;
     border:1px solid #ccc;
     border-radius:5px;
     padding:20px;
     margin:10vh auto;
+}
+
+.loading{
+    height:75px;
+    width:75px;
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #dd2956;
+    border-radius:50%;
+    margin:50px auto;
+    animation: rotate 1s ease-in-out infinite;
+}
+@keyframes rotate{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
 }

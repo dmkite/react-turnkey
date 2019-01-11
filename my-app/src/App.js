@@ -1,41 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
-import ProtectedPage from './ProtectedPage'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import Login from './Login'
 import Signup from './Signup'
+import ProtectedPage from './ProtectedPage'
+import AuthenticatedRoute from './AuthenticatedRoute'
+import {request} from './utils/request'
+import {setAuthentication} from './actions/auth'
 
 
 class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      signup: false,
-    }
+  componentDidMount() {
+    request('/auth/token')
+    .then(response => this.props.setAuthentication(response))
+    .catch(err => this.props.setAuthentication(err))
   }
-  handleClick = () => {
-    this.setState({
-      signup: !this.state.signup
-    })
-  }
-
-  handleLogin = () => {
-    
-  }
-
   render() {
     return (
-      <div className="wrapper">
-        {this.state.signup 
-          ? <Signup handleSignup={this.handleSignup} handleClick={this.handleClick}/>
-          : <div>
-            {this.state.isLoggedIn ? <ProtectedPage /> : <Login handleClick={this.handleClick} handleLogin={this.handleLogin}/>}
-             
-          </div>}
-      </div>
-
+      <BrowserRouter>
+        <Switch>
+          <AuthenticatedRoute path='/home' component={ProtectedPage}/>
+          <Route path='/signup' component={Signup} />
+          <Route path='/login' component={Login}/>
+          <Route path='/' component={Login}/>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
 
+const mapStateToProps = state => ({auth: state.auth})
+const mapDispatchToProps = dispatch => bindActionCreators({ setAuthentication}, dispatch)
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App)

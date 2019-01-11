@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 .hidden{
     visibility: hidden;
 }
@@ -70,12 +75,96 @@ input, button[type="submit"]{
     100%{transform:rotate(360deg)}
 }
 
+
+/*===========LandingPage============*/
+.actions{
+    width:100%;
+    margin-top:0;
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+    flex-direction: row-reverse;
+}
 .logout{
     text-decoration:underline;
+    color:white;
+    height:40px;
+    line-height:40px;
+    
 }
 
 .logout:hover{
     opacity:0.8;
     cursor:pointer;
 }
+
+.home header img{
+    height:40px;
+    width:40px;
+}
+
+.home header{
+    height:200px;
+    background-color:#ccc;
+    position:relative;
+}
+
+.greeting{
+    position:absolute;
+    width:100%;
+    top:125px;
+    display:flex;
+}
+
+.greeting p{
+    line-height:100px;
+    margin-left:10px;
+}
+
+.letter{
+    background-color:#dfdfdf;
+    border-radius:50%;
+    width:150px;
+    height:150px;
+    font-size:95px;
+    line-height:150px;
+    text-align:center;
+    border:2px solid #ccc;
+    margin-left:10px;
+}
+.queue{
+    outline:1px solid green;
+    margin-top:95px;
+}
+.button{
+    height:50px;
+    width:50px;
+    background-color:#666;
+    border-radius:50%;
+    position:fixed;;
+    bottom:10px;
+    right:10px;
+    font-size:45px;
+    color:white;
+    font-weight:100;
+    text-align:center;
+    box-shadow: 2.5px 2.5px 5px 0px rgba(0,0,0,0.5)
+}
+.button img{
+    height:30px;
+    width:30px;
+    position:block;
+    margin:10px 
+}
+
+.button:nth-of-type(2){
+    background-color:#444;
+    bottom:80px;
+}
+.button:nth-of-type(1){
+    bottom:150px;
+    background-color:#222;
+}
+
+
 

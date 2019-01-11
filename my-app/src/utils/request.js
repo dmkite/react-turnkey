@@ -2,8 +2,7 @@
 import axios from 'axios'
 
 export const request = (url, method = 'get', body = null) => {
-        console.log(body)
-        return axios(url, {
+        return axios( process.env.REACT_APP_BASE_URL + url, {
             method,
             headers:{
                 Authorization: `Bearer ${localStorage.getItem('token')}`

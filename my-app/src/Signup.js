@@ -3,6 +3,9 @@ import Warning from './Warning'
 import { connect } from 'react-redux'
 import { bindActionCreators} from 'redux'
 import {signup} from './actions/auth'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+
 
 class Signup extends Component{
     constructor(props){
@@ -37,7 +40,14 @@ class Signup extends Component{
         e.preventDefault()
         const {f_name, l_name, username, password, passwordMatch} = this.state
         const body = { f_name, l_name, username, password, passwordMatch }
-        this.props.signup(body)
+        return axios.post(`${process.env.REACT_APP_BASE_URL}/users/signup`, body)
+        .then(response => {
+            this.props.signup(response.data)
+            this.props.history.push('/')
+        })
+        .catch(err => {
+            this.props.signup(err)
+        })
     }
 
     render(){
@@ -63,8 +73,9 @@ class Signup extends Component{
                     }
 
                 </form>
-                <p className="actions">Already a member? <a href="#" onClick={this.props.handleClick}>Login</a></p>
-                {this.state.errorState ? <Warning warning={this.state.errorMessage}/> : ''}
+                <p className="actions">Already a member? <Link to='/login'>Login</Link></p>
+                {this.props.auth.error ? <div className="warning">{this.props.auth.error}</div> : null}
+                {this.props.auth.success ? <div className="success">{this.props.auth.success}</div> : null} 
             </div>
         )
     }

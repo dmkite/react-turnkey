@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 function login(req, res, next) {
     let { username, password } = req.body
-
+    console.log(username, password)
     if (!username || !password) return next({ status: 400, message: 'Error with username or password' })
     username = username.toLowerCase()
     return model.login(username, password)
@@ -13,7 +13,7 @@ function login(req, res, next) {
                 sub: result
             }
             const token = jwt.sign(payload, process.env.SECRET)
-            res.status(200).send({ token })
+            res.status(200).send({ token, user: payload.sub })
         })
         .catch(next)
 }

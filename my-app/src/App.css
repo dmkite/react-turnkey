@@ -69,3 +69,13 @@ input, button[type="submit"]{
     0%{transform:rotate(0deg)}
     100%{transform:rotate(360deg)}
 }
+
+.logout{
+    text-decoration:underline;
+}
+
+.logout:hover{
+    opacity:0.8;
+    cursor:pointer;
+}
+

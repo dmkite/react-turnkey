@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import Warning from './Warning'
-import axios from 'axios'
+import { logIn } from './actions/auth'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class Login extends Component{
+class Login extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -21,20 +23,12 @@ export default class Login extends Component{
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        const body = {
+        const body ={
             username: this.state.username,
             password: this.state.password
         }
-        try{
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/token`, body)
-            localStorage.setItem('token', response.data.token)
-            return this.props.handleLogin()
-        }catch(err){
-            this.setState({
-                errorState: true,
-                errorMessage: err.response.data.message
-            })
-        }
+
+        return this.props.logIn(body)
         }
 
     render(){
@@ -58,3 +52,8 @@ export default class Login extends Component{
         )
     }
 }
+
+const mapStateToProps = state => ({ auth: state.auth })
+const mapDispatchToProps = dispatch => bindActionCreators({ logIn }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

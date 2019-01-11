@@ -4,16 +4,16 @@ import ProtectedPage from './ProtectedPage'
 import Login from './Login'
 import Signup from './Signup'
 
+
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoggedIn: false,
-      user: {
-        f_name: null,
-        l_name: null
-      },
-      signup: false
+      signup: false,
+      auth: {
+        pending: false,
+        user: null
+      }
     }
   }
   handleClick = () => {
@@ -23,10 +23,7 @@ class App extends Component {
   }
 
   handleLogin = () => {
-    this.setState({
-      isLoggedIn:true,
-      signup: false
-    })
+
   }
 
   render() {
@@ -43,5 +40,6 @@ class App extends Component {
     )
   }
 }
+
 
 export default App;

@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import Warning from './Warning'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { bindActionCreators} from 'redux'
+import {signup} from './actions/auth'
 
-export default class Signup extends Component{
+class Signup extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -35,15 +37,7 @@ export default class Signup extends Component{
         e.preventDefault()
         const {f_name, l_name, username, password, passwordMatch} = this.state
         const body = { f_name, l_name, username, password, passwordMatch }
-        try{
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/signup`, body)
-            this.props.handleSignup()
-        } catch(err){
-            this.setState({
-                errorMessage: err.response.data.message || "Something went wrong. Let's try that again.",
-                errorState:true
-            })
-        }
+        this.props.signup(body)
     }
 
     render(){
@@ -75,3 +69,8 @@ export default class Signup extends Component{
         )
     }
 }
+
+const mapStateToProps = state => ({auth:state.auth})
+const mapDispatchToProps = dispatch => bindActionCreators({signup}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

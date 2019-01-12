@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from './store'
+import 'font-awesome/css/font-awesome.css';
+
 
 ReactDOM.render(
     <Provider store={store}>

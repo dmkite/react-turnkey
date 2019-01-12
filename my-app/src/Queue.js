@@ -5,7 +5,13 @@ import { connect } from 'react-redux';
 class Queue extends Component{
     render(){
         return(
-            <div className="queue">Queue</div>
+            <div className="queue">
+                <QueueItem/>
+                <QueueItem />
+                <QueueItem />
+                <QueueItem />
+                <QueueItem />
+            </div>
         )
     }
 }

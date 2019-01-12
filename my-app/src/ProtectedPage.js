@@ -17,7 +17,7 @@ class ProtectedPage extends Component{
                 <header>
                     <div className='actions'>
                         <Link to='/edit-profile'>
-                            <img src="img/edit-profile.png" alt="Cog icon"/>
+                            <i className="fa fa-cog"></i>
                         </Link>
                         <p className='logout' onClick={this.handleLogOut}>Log Out</p>
                     </div>
@@ -27,13 +27,13 @@ class ProtectedPage extends Component{
                     </div>
                 </header>
                 <div className="button">
-                    <img src="img/user.png" alt="user icon"/>
+                    <i className="fa fa-user"></i>
                 </div>
                 <div className="button">
-                    <img src="img/filter.png" alt="filter icon" />
+                    <i className="fa fa-filter"></i>
                 </div>
                 <div className="button">
-                    +
+                    <i className="fa fa-plus"></i>
                 </div>
                 <Queue/>
             </div>

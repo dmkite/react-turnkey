@@ -9,6 +9,7 @@ import ProtectedPage from './ProtectedPage'
 import AuthenticatedRoute from './AuthenticatedRoute'
 import {request} from './utils/request'
 import {setAuthentication} from './actions/auth'
+import EditProfile from './EditProfile'
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <AuthenticatedRoute path='/home' component={ProtectedPage}/>
+          <AuthenticatedRoute path='/edit-profile' component={EditProfile}/>
           <Route path='/signup' component={Signup} />
           <Route path='/login' component={Login}/>
           <Route path='/' component={Login}/>

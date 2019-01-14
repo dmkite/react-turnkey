@@ -4,18 +4,31 @@ import {logOut} from './actions/auth'
 import {bindActionCreators} from 'redux'
 import {Link} from 'react-router-dom'
 import Queue from './Queue'
+import FilterOptions from './FilterOptions'
 
 class ProtectedPage extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            filterOpen: false
+        }
+    }
     handleLogOut = () => {
         this.props.logOut()
         this.props.history.push('/')
+    }
+
+    handleClick = () => {
+        this.setState({
+            filterOpen: !this.state.filterOpen
+        })
     }
 
     render(){
         return(
             <div className="home">
                 <header>
-                    <div className='actions'>
+                    <div className='accountActions'>
                         <Link to='/edit-profile'>
                             <i className="fa fa-cog"></i>
                         </Link>
@@ -29,9 +42,10 @@ class ProtectedPage extends Component{
                 <div className="button">
                     <i className="fa fa-user"></i>
                 </div>
-                <div className="button">
+                <div onClick={this.handleClick} className="button">
                     <i className="fa fa-filter"></i>
                 </div>
+                {this.state.filterOpen ? <FilterOptions handleClick={this.handleClick}/> : null}
                 <div className="button">
                     <i className="fa fa-plus"></i>
                 </div>

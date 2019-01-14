@@ -77,7 +77,7 @@ input, button[type="submit"]{
 
 
 /*===========LandingPage============*/
-.actions{
+.accountActions{
     width:100%;
     margin-top:0;
     padding:10px;
@@ -140,7 +140,7 @@ input, button[type="submit"]{
     width:50px;
     background-color:#666;
     border-radius:50%;
-    position:fixed;;
+    position:fixed;
     bottom:10px;
     right:10px;
     font-size:35px;
@@ -172,6 +172,7 @@ input, button[type="submit"]{
 .queue{
     padding:10px;
 }
+
 .queueItem{
     border:1px solid #ccc;
     border-radius:5px;
@@ -208,3 +209,54 @@ input, button[type="submit"]{
     opacity:0.7;
     margin:10px;
 }
+
+.filterButtons{
+    position:fixed;
+    width: calc(100% - 60px);
+    outline:1px dotted red;
+    z-index:99;
+    right:60px;
+    bottom:90px;
+    display:flex;
+    justify-content: space-between;
+    padding:0 10px;
+    animation: slideOut .5s ease-in;
+    overflow:hidden;
+}
+
+@keyframes slideOut{
+    0%{width: 0px;}
+    100%{width: calc(100% - 60px)}
+}
+
+@keyframes slideIn{
+    0%{width: calc(100% - 60px)}
+    100%{width: 0px;}
+
+}
+.filterButton{
+    height:30px;
+    width:30px;
+    background-color: #444;
+    color:white;
+    flex-shrink: 0;
+    border-radius:50%;
+    text-align:center;
+    line-height:30px;
+}
+
+
+@keyframes fadeIn{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+.gradientScreen{
+    position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0; left:0;
+    background: radial-gradient(at 70% 70%, #00000040, #000000cc);
+    z-index:98;
+    animation:fadeIn .25s ease-in;
+}
+

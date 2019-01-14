@@ -32,3 +32,18 @@ export function signup(payload){
         }
         
 }
+
+export const EDIT_PROFILE = 'EDIT_PROFILE'
+export function editProfile(payload){
+    try{
+        return async dispatch => {
+            const response = await request(`${process.env.REACT_APP_BASE_URL}/users/edit`, 'post', payload) //need to write route to edit profile
+            dispatch({
+             type: EDIT_PROFILE,
+             payload: response.data   
+            })
+        }
+    }catch(err){
+        console.error(err)
+    }
+}

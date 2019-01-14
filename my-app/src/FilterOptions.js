@@ -10,14 +10,15 @@ class FilterOptions extends Component{
       games: false,
       places: false,
       links: false,
-      slideIn: false
+      slideOpen: true
     }
   }
 
   handleClick(e){
     const key = e.target.getAttribute('data-id')
     this.setState({
-      [key]: !this.state[key]
+      [key]: !this.state[key],
+      slideOpen: false
     })
     setTimeout(
       () => {
@@ -27,12 +28,17 @@ class FilterOptions extends Component{
         setTimeout(() => { this.props.handleClick()}, 500)
       }, 0
     )
+  } "filterButtons slideOpen"
+
+  slideIn(e){
+    e.currentTarget.classList.remove('slideOpen')
+    e.currentTarget.classList.add('slideClose')
   }
 
   render(){
     return(
       <Fragment>
-        <div className="filterButtons" style={this.state.slideIn ? {animation: 'slidein .5s ease-in'} : null}>
+        <div className={`filterButtons ${this.state.slideOpen ? 'slideOpen' : 'slideClose'}`} onClick={e => this.slideIn(e)}>
           <div className={`filterButton ${ this.state.starred ? 'selected' : null}`} data-name="starred" onClick={e => this.handleClick(e)}>
             <i className="fa fa-star"></i>
           </div>
@@ -40,13 +46,13 @@ class FilterOptions extends Component{
             <i className="fa fa-music"></i>
           </div>
           <div className={`filterButton ${this.state.video ? 'selected' : null}`} data-name="video" onClick={e => this.handleClick(e)}>
-            <i className="fa fa-video"></i>
+            <i className="fa fa-tv"></i>
           </div>
           <div className={`filterButton ${this.state.games ? 'selected' : null}`} data-name="games" onClick={e => this.handleClick(e)}>
             <i className="fa fa-gamepad"></i>
           </div>
           <div className={`filterButton ${this.state.places ? 'selected' : null}`} data-name="places" onClick={e => this.handleClick(e)}>
-            <i className="fa fa-map-marker-alt"></i>
+            <i className="fa fa-map-marker"></i>
           </div>
           <div className={`filterButton ${this.state.links ? 'selected' : null}`} data-name="links" onClick={e => this.handleClick(e)}>
             <i className="fa fa-link"></i>

@@ -11,7 +11,7 @@
 form, .actions{
     border:1px solid #ccc;
     border-radius:5px;
-    width:50%;
+    width:75%;
     padding:20px;
     margin:15vh auto 0;
 }
@@ -158,10 +158,15 @@ input, button[type="submit"]{
     margin:10px;
 }
 
+.button:nth-of-type(1) i{
+    font-size:30px;
+}
+
 .button:nth-of-type(2){
     background-color:#444;
     bottom:80px;
 }
+
 .button:nth-of-type(1){
     bottom:150px;
     background-color:#222;
@@ -213,23 +218,27 @@ input, button[type="submit"]{
 .filterButtons{
     position:fixed;
     width: calc(100% - 60px);
-    outline:1px dotted red;
     z-index:99;
     right:60px;
     bottom:90px;
     display:flex;
     justify-content: space-between;
     padding:0 10px;
-    animation: slideOut .5s ease-in;
     overflow:hidden;
 }
+.slideOpen{
+    animation: slideOpen .5s ease-in;
+}
 
-@keyframes slideOut{
+.slideClose{
+    animation: slideClose .5s ease-in;
+}
+@keyframes slideOpen{
     0%{width: 0px;}
     100%{width: calc(100% - 60px)}
 }
 
-@keyframes slideIn{
+@keyframes slideClose{
     0%{width: calc(100% - 60px)}
     100%{width: 0px;}
 
@@ -250,13 +259,19 @@ input, button[type="submit"]{
     0%{opacity:0}
     100%{opacity:1}
 }
+
+
 .gradientScreen{
-    position:absolute;
+    position:fixed;
     height:100vh;
     width:100vw;
     top:0; left:0;
-    background: radial-gradient(at 70% 70%, #00000040, #000000cc);
+    background: radial-gradient(at 70% 70%, #00000020, #00000090);
     z-index:98;
     animation:fadeIn .25s ease-in;
+}
+
+.selected{
+    transform:scale(1.1)
 }
 

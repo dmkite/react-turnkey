@@ -40,7 +40,7 @@ class ProtectedPage extends Component{
                     </div>
                 </header>
                 <div className="button">
-                    <i className="fa fa-user"></i>
+                    <i className="fa fa-users"></i>
                 </div>
                 <div onClick={this.handleClick} className="button">
                     <i className="fa fa-filter"></i>
